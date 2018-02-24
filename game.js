@@ -44,15 +44,16 @@ document.onkeyup = function(event) {
 
   //If the user's guess is equal to the computer's guess, add 1 win and reduce guesses by 1.
   if (userGuess === compGuess) {
-    wins++, guessesLeft--;
+    wins++,
+      (guessesLeft = 9),
+      (compGuess = alphabet[Math.floor(Math.random() * alphabet.length)]);
   } else {
     //Else, reduce guesses by 1 and re-run the random letter selection process.
     guessesLeft--,
       (compGuess = alphabet[Math.floor(Math.random() * alphabet.length)]);
   }
-
   //If the total number of guesses reaches 0, add 1 loss, reset total guesses to 9, and re-run the random letter selection process to begin a new round of 9 guesses.
-  if (guessesLeft === 0) {
+  if (guessesLeft < 1) {
     losses++,
       (guessesLeft = 9),
       (compGuess = alphabet[Math.floor(Math.random() * alphabet.length)]);
