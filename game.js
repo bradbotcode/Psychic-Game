@@ -61,6 +61,9 @@ document.onkeyup = function(event) {
     "<p>Your Guesses so far: " +
     guessChoices.join(", ") +
     "</p>" +
+    "<p>The Computer Guessed: " +
+    compGuess +
+    "</p>" +
     "<p>Wins: " +
     wins +
     "</p>" +
