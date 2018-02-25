@@ -54,7 +54,7 @@ document.onkeyup = function(event) {
   }
   repeatGuess(guessedLetters);
 
-  //If statements dictating outcome based on the above choices
+  //If/Else statements dictating outcome based on the above choices
   //If guesses are the same, add 1 to wins, reset guesses to 9 and empty guesses so far array
   if (userGuess === compGuess) {
     wins++;
