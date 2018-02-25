@@ -26,11 +26,12 @@ var compChoices = [
   "y",
   "z"
 ];
+
 //Setting variables
 var wins = 0;
 var losses = 0;
 var guessesLeft = 9;
-var guessChoices = [];
+var guessedLetters = [];
 
 //Capturing user's guess
 document.onkeyup = function(event) {
@@ -40,23 +41,35 @@ document.onkeyup = function(event) {
   var compGuess = compChoices[Math.floor(Math.random() * compChoices.length)];
   console.log(compGuess);
 
+  //Function checks to see if userGuess is already a part of guessedLetters array. If not, it will push userGuess there. If it is, it will alert user and re-add a guess.
+  function repeatGuess(guessedLetters) {
+    guessedLetters.indexOf(userGuess) < 0;
+
+    if (guessedLetters.indexOf(userGuess) < 0) {
+      guessedLetters.push(userGuess);
+    } else {
+      alert("You already guessed that letter. Try again!");
+      guessesLeft++;
+    }
+  }
+  repeatGuess(guessedLetters);
+
   //If statements dictating outcome based on the above choices
   //If guesses are the same, add 1 to wins, reset guesses to 9 and empty guesses so far array
   if (userGuess === compGuess) {
     wins++;
     guessesLeft = 9;
-    guessChoices = [];
+    guessedLetters = [];
     compGuess = "";
   } else {
-    //If guesses are different, remove 1 from guesses left, push the user's guess to array
+    //If guesses are different, remove 1 from guesses left
     guessesLeft--;
-    guessChoices.push(userGuess);
   }
   //If total guesses equal 0, add 1 to losses, reset guesses to 9, clear guesses array and reset compGuess to show nothing
   if (guessesLeft === 0) {
-    guessesLeft = 9;
     losses++;
-    guessChoices = [];
+    guessesLeft = 9;
+    guessedLetters = [];
     compGuess = "";
   }
 
@@ -64,7 +77,7 @@ document.onkeyup = function(event) {
     "<h1> The Psychic Game </h1>" +
     "<p>Guess what letter I'm thinking of!</p>" +
     "<p>Your Guesses so far: " +
-    guessChoices.join(", ") +
+    guessedLetters.join(", ") +
     "</p>" +
     "<p>The Computer Guessed: " +
     compGuess +
