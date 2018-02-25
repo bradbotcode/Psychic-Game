@@ -27,17 +27,17 @@ var compChoices = [
   "z"
 ];
 
-//Setting variables
+//Game stats variables.
 var wins = 0;
 var losses = 0;
 var guessesLeft = 9;
 var guessedLetters = [];
 
-//Capturing user's guess
+//Capturing user's guess.
 document.onkeyup = function(event) {
   var userGuess = event.key;
 
-  //Computer generates random guess
+  //Computer generates random guess.
   var compGuess = compChoices[Math.floor(Math.random() * compChoices.length)];
   console.log(compGuess);
 
@@ -54,18 +54,18 @@ document.onkeyup = function(event) {
   }
   repeatGuess(guessedLetters);
 
-  //If/Else statements dictating outcome based on the above choices
-  //If guesses are the same, add 1 to wins, reset guesses to 9 and empty guesses so far array
+  //If/Else statements dictating outcome based on the above choices.
+  //If guesses are the same, add 1 to wins, reset guesses to 9 and empty guessedLetters array.
   if (userGuess === compGuess) {
     wins++;
     guessesLeft = 9;
     guessedLetters = [];
     compGuess = "";
   } else {
-    //If guesses are different, remove 1 from guesses left
+    //If guesses are different, remove 1 from guessesLeft.
     guessesLeft--;
   }
-  //If total guesses equal 0, add 1 to losses, reset guesses to 9, clear guesses array and reset compGuess to show nothing
+  //If total guesses equal 0, add 1 to losses, reset guessesLeft to 9, clear guessedLetters array and reset compGuess to show nothing.
   if (guessesLeft === 0) {
     losses++;
     guessesLeft = 9;
