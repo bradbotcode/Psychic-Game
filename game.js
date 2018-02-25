@@ -26,33 +26,36 @@ var compChoices = [
   "y",
   "z"
 ];
-
+//Setting variables
 var wins = 0;
 var losses = 0;
 var guessesLeft = 9;
 var guessChoices = [];
-
+//Capturing user's guess
 document.onkeyup = function(event) {
   var userGuess = event.key;
-
+  //Computer generates random guess
   var compGuess = compChoices[Math.floor(Math.random() * compChoices.length)];
   console.log(compGuess);
-
+  //If statements dictating outcome based on the above choices
+  //If guesses are the same, add 1 to wins, reset guesses to 9 and empty guesses so far array
   if (userGuess === compGuess) {
     wins++;
-    numGuesses = 9;
+    guessesLeft = 9;
     guessChoices = [];
-  }
-
-  if (userGuess != compGuess) {
+    compGuess = "";
+  } else {
+    //If guesses are different, remove 1 from guesses left, push the user's guess to array
     guessesLeft--;
     guessChoices.push(userGuess);
   }
 
   if (guessesLeft === 0) {
+    //If total guesses equal 0, add 1 to losses, reset guesses to 9, clear guesses array and reset compGuess to show nothing
     guessesLeft = 9;
     losses++;
     guessChoices = [];
+    compGuess = "";
   }
 
   var html =
