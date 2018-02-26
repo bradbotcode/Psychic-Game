@@ -42,18 +42,13 @@ document.onkeyup = function(event) {
   var compGuess = compChoices[Math.floor(Math.random() * compChoices.length)];
   console.log(compGuess);
 
-  //Function checks to see if playerGuess is already a part of guessedLetters array.
-  //If not, it will push playerGuess there.
-  //If it is, it will alert player and re-add a guess.
-  function repeatGuess() {
+  //Function stores playerGuess in guessedLetters array.
+  function storeGuess() {
     if (guessedLetters.indexOf(playerGuess) < 0) {
       guessedLetters.push(playerGuess);
-    } else {
-      alert("You already guessed that letter. Try again!");
-      guessesLeft++;
     }
   }
-  repeatGuess();
+  storeGuess();
 
   //If/Else statements dictating outcome based on the above choices.
   //If guesses are the same, add 1 to wins, reset guessesLeft to 9 and empty guessedLetters array.
