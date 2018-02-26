@@ -46,8 +46,6 @@ document.onkeyup = function(event) {
   //If not, it will push playerGuess there.
   //If it is, it will alert player and re-add a guess.
   function repeatGuess() {
-    guessedLetters.indexOf(playerGuess) < 0;
-
     if (guessedLetters.indexOf(playerGuess) < 0) {
       guessedLetters.push(playerGuess);
     } else {
