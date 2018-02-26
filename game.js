@@ -1,3 +1,4 @@
+//Array of letters.
 var compChoices = [
   "a",
   "b",
@@ -33,20 +34,22 @@ var losses = 0;
 var guessesLeft = 9;
 var guessedLetters = [];
 
-//Capturing user's guess.
+//Capturing player's guess.
 document.onkeyup = function(event) {
-  var userGuess = event.key;
+  var playerGuess = event.key;
 
   //Computer generates random guess.
   var compGuess = compChoices[Math.floor(Math.random() * compChoices.length)];
   console.log(compGuess);
 
-  //Function checks to see if userGuess is already a part of guessedLetters array. If not, it will push userGuess there. If it is, it will alert user and re-add a guess.
+  //Function checks to see if playerGuess is already a part of guessedLetters array.
+  //If not, it will push playerGuess there.
+  //If it is, it will alert player and re-add a guess.
   function repeatGuess() {
-    guessedLetters.indexOf(userGuess) < 0;
+    guessedLetters.indexOf(playerGuess) < 0;
 
-    if (guessedLetters.indexOf(userGuess) < 0) {
-      guessedLetters.push(userGuess);
+    if (guessedLetters.indexOf(playerGuess) < 0) {
+      guessedLetters.push(playerGuess);
     } else {
       alert("You already guessed that letter. Try again!");
       guessesLeft++;
@@ -55,8 +58,8 @@ document.onkeyup = function(event) {
   repeatGuess();
 
   //If/Else statements dictating outcome based on the above choices.
-  //If guesses are the same, add 1 to wins, reset guesses to 9 and empty guessedLetters array.
-  if (userGuess === compGuess) {
+  //If guesses are the same, add 1 to wins, reset guessesLeft to 9 and empty guessedLetters array.
+  if (playerGuess === compGuess) {
     wins++;
     guessesLeft = 9;
     guessedLetters = [];
