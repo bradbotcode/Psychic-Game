@@ -42,7 +42,7 @@ document.onkeyup = function(event) {
   console.log(compGuess);
 
   //Function checks to see if userGuess is already a part of guessedLetters array. If not, it will push userGuess there. If it is, it will alert user and re-add a guess.
-  function repeatGuess(guessedLetters) {
+  function repeatGuess() {
     guessedLetters.indexOf(userGuess) < 0;
 
     if (guessedLetters.indexOf(userGuess) < 0) {
